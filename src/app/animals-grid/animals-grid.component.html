@@ -1,0 +1,6 @@
+<mat-grid-list cols="3" rowHeight="1:1">
+  <mat-grid-tile *ngFor="let animal of animals">
+    <div class="test" [ngStyle]="{ 'background-image': 'url(' + animal.photo + ')'}"></div>
+    <div class="testbehind">{{ animal.name }}</div>
+  </mat-grid-tile>
+</mat-grid-list>
