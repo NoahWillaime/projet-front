@@ -2,3 +2,16 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+app-card:hover .card-info {
+  right: 0%;
+  background-color:  rgba(223, 228, 234,1);;
+  color: rgba(0, 0, 0, 1);
+  transition: color 0.25s linear 0.75s, right 1s linear, background-color 0.25s linear;
+}
+
+
+app-card:hover .card-text {
+  color: rgba(0, 0, 0, 1);
+  transition: color 0.25s linear 0.75s;
+}

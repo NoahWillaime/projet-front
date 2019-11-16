@@ -1,0 +1,23 @@
+.card-info {
+  position: absolute;
+  box-shadow: 0 0 0 0;
+  left: 0%;
+  right: 100%;
+  top: 0%;
+  bottom: 0%;
+  padding: 4%;
+  background-color: rgba(223, 228, 234,0);
+  color: rgba(0, 0, 0, 0);
+  transition: color 0.25s linear, right 1s linear, background-color 0.25s linear;
+}
+
+.card-title {
+  font-size: 3.5vw;
+  text-transform: uppercase;
+  margin-top: 2%;
+}
+
+.card-text {
+  color: rgba(0, 0, 0, 0);
+  transition: color 0.25s linear;
+}

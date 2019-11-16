@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient } from "@angular/common/http";
-import {Animals} from "../shared/interfaces/animals";
+import {Animal} from "../shared/interfaces/animal";
 
 @Component({
   selector: 'app-animals-grid',
@@ -8,14 +8,14 @@ import {Animals} from "../shared/interfaces/animals";
   styleUrls: ['./animals-grid.component.css']
 })
 export class AnimalsGridComponent implements OnInit {
-  animals: Animals[];
+  animals: Animal[];
 
   constructor(private readonly _http: HttpClient) {
   }
 
   ngOnInit() {
     this._http.get('http://localhost:3000/animals')
-      .subscribe((animals: Animals[]) =>
+      .subscribe((animals: Animal[]) =>
           this.animals = animals
       );
   }

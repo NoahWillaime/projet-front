@@ -1,4 +1,4 @@
-export interface Animals {
+export interface Animal {
   id: string;
   name: string;
   photo?: string;

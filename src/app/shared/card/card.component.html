@@ -1,0 +1,26 @@
+<mat-card class="card-info">
+  <mat-card-title class="card-title">{{ animal.name }}</mat-card-title>
+    <mat-card-subtitle class="card-text">
+      <div>Espèce</div>
+      <div>{{animal.species}}</div>
+    </mat-card-subtitle>
+    <mat-card-subtitle class="card-text">
+      <div>Race</div>
+      <div>{{animal.breed}}</div>
+    </mat-card-subtitle>
+    <mat-card-subtitle class="card-text">
+      <div>Alimentation</div>
+      <div>{{animal.diet}}</div>
+    </mat-card-subtitle>
+    <mat-card-subtitle class="card-text">
+      <div>Santé</div>
+      <div>{{animal.health}}</div>
+    </mat-card-subtitle>
+    <mat-card-subtitle class="card-text">
+      <div>Description</div>
+      <div >{{animal.description}}</div>
+    </mat-card-subtitle>
+    <mat-card-subtitle class="card-text">
+      <div>{{animal.name}} est arrivé le {{animal.enterDate | date: 'dd-MM-yyyy'}} !</div>
+    </mat-card-subtitle>
+</mat-card>
