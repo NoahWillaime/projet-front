@@ -1,17 +1,36 @@
 /* You can add global styles to this file, and also import other style files */
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { margin: 0; font-size: 15px; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+@media screen and (max-width: 800px)
+{
+  body { font-size: 5px; }
+}
+
+@media screen and (max-width: 1250px) {
+  body { font-size: 10px; }
+}
+
+app-card:hover .type-male:before {
+  right: -10%;
+  background-color: rgba(9, 132, 227,1.0);
+  transition: right 1s linear, background-color 0.25s linear;
+}
 
 app-card:hover .card-info {
   right: 0%;
-  background-color:  rgba(223, 228, 234,1);;
+  background-color:  rgba(241, 242, 246,1.0);
   color: rgba(0, 0, 0, 1);
   transition: color 0.25s linear 0.75s, right 1s linear, background-color 0.25s linear;
 }
 
-
-app-card:hover .card-text {
+app-card:hover .info-text {
   color: rgba(0, 0, 0, 1);
+  transition: color 0.25s linear 0.75s;
+}
+
+app-card:hover .info-titre {
+  color: rgba(116, 125, 140, 1);
   transition: color 0.25s linear 0.75s;
 }

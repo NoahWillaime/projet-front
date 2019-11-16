@@ -12,12 +12,53 @@
 }
 
 .card-title {
-  font-size: 3.5vw;
+  position: relative;
+  display: inline-block;
+  font-size: 3.5em;
+  font-family: 'Fjalla One', sans-serif;
   text-transform: uppercase;
   margin-top: 2%;
+  white-space:nowrap;
+  z-index: 0;
+}
+
+.type-male:before {
+  content: '';
+  position: absolute;
+  bottom: 5%;
+  left: -2.5%;
+  height: 40%;
+  right: 102.5%;
+  background-color: rgba(9, 132, 227,0);
+  transition: right 1s linear, background-color 0.25s linear;
+  z-index: -1;
 }
 
 .card-text {
+  font-family: 'Fjalla One', sans-serif;
+}
+
+.info-text {
+  font-size: 1.2em;
   color: rgba(0, 0, 0, 0);
   transition: color 0.25s linear;
+}
+
+.info-titre {
+  font-size: 1em;
+  color: rgba(116, 125, 140, 0);
+  transition: color 0.25s linear;
+}
+
+@media screen and (max-width: 1250px) {
+  .info-text { font-size: 0.8em; }
+  .info-titre { font-size: 0.7em; }
+}
+
+@media screen and (max-width: 800px)
+{
+  .mat-card-title { margin-bottom: 4px; }
+  .info-text { font-size: 0.4em; }
+  .info-titre { font-size: 0.35em; }
+  .mat-card-subtitle { margin-bottom: 5px; }
 }
