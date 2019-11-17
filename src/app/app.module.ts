@@ -22,6 +22,7 @@ import {MatDialogModule} from "@angular/material/dialog";
 import {MatButtonModule} from "@angular/material/button";
 import {JwtInterceptor} from "./interceptors/JwtInterceptor";
 import {AuthInterceptor} from "./interceptors/AuthInterceptor";
+import { LogoutComponent } from './logout/logout.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import {AuthInterceptor} from "./interceptors/AuthInterceptor";
     HomeComponent,
     SpeciesComponent,
     RefugeComponent,
-    LoginComponent
+    LoginComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,

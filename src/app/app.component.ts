@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {AuthentificationService} from "./shared/services/authentification.service";
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'projet-front';
+  constructor(private readonly _authSevice: AuthentificationService){
+  }
+
+  isLog(): boolean {
+    const currentUser =  this._authSevice.currentUserValue
+    if (currentUser)
+      return true;
+    else
+      return false;
+  }
 }

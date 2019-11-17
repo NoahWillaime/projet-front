@@ -1,4 +1,11 @@
 <mat-toolbar>
-  <span>My super App</span>
+  <span class="toolbar-button">
+    <a [routerLink]="['/']">Adopt'un pet</a>
+  </span>
+  <span class="flex"></span>
+  <span class="toolbar-button" [ngSwitch]="isLog()">
+    <a *ngSwitchCase="false" [routerLink]="['/login']" >Login</a>
+    <a *ngSwitchDefault [routerLink]="['/logout']" >Logout</a>
+  </span>
 </mat-toolbar>
 <router-outlet></router-outlet>

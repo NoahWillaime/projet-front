@@ -1,23 +1,23 @@
-<form novalidate [formGroup]="form">
-  LOGIN
-  <mat-form-field>
-    <input matInput placeholder="Username" value="" required name="username" formControlName="username">
-    <mat-error *ngIf="form.get('username').dirty && form.get('username').hasError('required')">
-      Username is <strong>required</strong>
-    </mat-error>
-  </mat-form-field>§
-  <mat-form-field>
-    <input matInput placeholder="Password" value="" type="password" required name="password" formControlName="password">
-    <mat-error *ngIf="form.get('password').dirty && form.get('password').hasError('required')">
-      Password is <strong>required</strong>
-    </mat-error>
-  </mat-form-field>
-  <mat-error *ngIf="!!error">
-    {{ error.message }}
-  </mat-error>
-</form>
-<mat-dialog-actions>
-  <button mat-button type="submit" (click)="onSubmit(form.value)" [disabled]="form.invalid">Login</button>
-</mat-dialog-actions>
-
-<button (click)="logout()">LOGOUT</button>
+<mat-card class="login-card">
+  <mat-card-title>Login</mat-card-title>
+    <form class="login-form" novalidate [formGroup]="form">
+      <mat-form-field>
+        <input matInput placeholder="Username" value="" required name="username" formControlName="username"/>
+        <mat-error *ngIf="form.get('username').dirty && form.get('username').hasError('required')">
+          Username is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Password" value="" type="password" required name="password" formControlName="password"/>
+        <mat-error *ngIf="form.get('password').dirty && form.get('password').hasError('required')">
+          Password is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-error *ngIf="!!error">
+        {{ error }}
+      </mat-error>
+    </form>
+    <mat-dialog-actions class="validate-form">
+      <button mat-raised-button type="submit" (click)="onSubmit(form.value)" [disabled]="form.invalid">Login</button>
+    </mat-dialog-actions>
+</mat-card>
