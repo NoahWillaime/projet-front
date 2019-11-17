@@ -8,6 +8,7 @@ import {Animal} from "../interfaces/animal";
 })
 export class CardComponent implements OnInit {
   private _animal: Animal;
+  private _isMale: boolean;
 
   constructor() { }
 
@@ -20,6 +21,14 @@ export class CardComponent implements OnInit {
     return this._animal;
   }
 
+  get isMale(): boolean {
+    return this._isMale;
+  }
+
   ngOnInit() {
+    this._isMale = false;
+    if (this._animal.gender === "Male") {
+      this._isMale = true;
+    }
   }
 }

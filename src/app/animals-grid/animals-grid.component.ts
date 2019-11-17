@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {HttpClient } from "@angular/common/http";
 import {Animal} from "../shared/interfaces/animal";
 
@@ -8,15 +8,22 @@ import {Animal} from "../shared/interfaces/animal";
   styleUrls: ['./animals-grid.component.css']
 })
 export class AnimalsGridComponent implements OnInit {
-  animals: Animal[];
+  private _animals: Animal[];
 
   constructor(private readonly _http: HttpClient) {
+    this._animals = [];
+  }
+
+  @Input()
+  set animals(animals: Animal[]) {
+    this._animals = [].concat(animals);
+  }
+
+  get animals(): Animal[] {
+    return this._animals;
   }
 
   ngOnInit() {
-    this._http.get('http://localhost:3000/animals')
-      .subscribe((animals: Animal[]) =>
-          this.animals = animals
-      );
+    this._animals = [];
   }
 }

@@ -1,5 +1,5 @@
 <mat-card class="card-info">
-    <mat-card-title class="card-title type-male">
+    <mat-card-title class="card-title" [class.type-male]="(isMale)" [class.type-female]="(!isMale)">
       {{ animal.name }}
     </mat-card-title>
     <mat-card-subtitle class="card-text">
