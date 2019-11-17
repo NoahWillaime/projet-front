@@ -1,0 +1,17 @@
+<section *ngIf="isOnlyOne">
+  <div>
+    <h1>{{ species }}</h1>
+    <app-animals-grid [animals]="animals"></app-animals-grid>
+  </div>
+</section>
+
+<section *ngIf="!isOnlyOne">
+  <mat-accordion>
+    <mat-expansion-panel *ngFor="let oneSpecies of species">
+      <mat-expansion-panel-header>
+        {{ oneSpecies | uppercase }}
+      </mat-expansion-panel-header>
+    <app-animals-grid [animals]="animalsBySpecies(oneSpecies)"></app-animals-grid>
+    </mat-expansion-panel>
+  </mat-accordion>
+</section>
