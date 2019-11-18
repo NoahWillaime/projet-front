@@ -4,8 +4,8 @@
   </span>
   <span class="flex"></span>
   <span class="toolbar-button">
-    <button mat-button *ngIf="isLogged()" (click)="goToLog()">Logout</button>
-    <button mat-button *ngIf="!isLogged()" (click)="goToLog()">Login</button>
+    <button mat-button *ngIf="isLogged()" (click)="logout()">Logout</button>
+    <button mat-button *ngIf="!isLogged()" (click)="login()">Login</button>
   </span>
 </mat-toolbar>
 <router-outlet></router-outlet>

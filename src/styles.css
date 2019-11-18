@@ -25,6 +25,7 @@ app-card:hover .type-female:before {
 }
 
 app-card:hover .card-info {
+  visibility: visible;
   right: 0%;
   background-color:  rgba(241, 242, 246,1.0);
   color: rgba(0, 0, 0, 1);

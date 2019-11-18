@@ -12,14 +12,16 @@ export class AppComponent {
   constructor(private readonly _authSevice: AuthentificationService, private readonly _route: Router){
   }
 
-  goToLog() {
-    if (this.isLogged())
-      this._route.navigate(['/logout']);
-    else
-      this._route.navigate(['/login']);
+  login() {
+    this._route.navigate(['/login']);
+  }
+
+  logout() {
+    this._route.navigate(['/logout']);
   }
 
   isLogged(): boolean {
-    return this._authSevice.isLogged;
+    console.log(this._authSevice.userLogged);
+    return this._authSevice.userLogged;
   }
 }

@@ -57,7 +57,7 @@ export class SpeciesComponent implements OnInit {
   }
 
   animalsBySpecies(species: string): Animal[] {
-    return this._animals.filter(_ => _.species === species);
+    return this._animals.filter(_ => _.species.toLowerCase() === species.toLowerCase());
   }
 
 }

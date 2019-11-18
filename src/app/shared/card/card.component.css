@@ -8,7 +8,8 @@
   padding: 4%;
   background-color: rgba(223, 228, 234,0);
   color: rgba(0, 0, 0, 0);
-  transition: color 0.25s linear, right 1s linear, background-color 0.25s linear;
+  visibility: hidden;
+  transition: visibility 0.35s, color 0.25s linear, right 1s linear, background-color 0.25s linear;
 }
 
 .card-title {

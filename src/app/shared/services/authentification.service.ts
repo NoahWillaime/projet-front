@@ -26,8 +26,10 @@ export class AuthentificationService {
     return this.currentUserSubject.value;
   }
 
-  public get isLogged(): boolean {
-    return (this.currentUser == null);
+  public get userLogged(): boolean {
+    if (!this.currentUserSubject.value)
+      return false;
+    return true;
   }
 
   login(username: string, password: string): Observable<any> {

@@ -64,7 +64,7 @@ export class RefugeComponent implements OnInit {
     return this._animalsService
       .create(animal)
       .pipe(
-        flatMap(_ => this._animalsService.fetch())
+        flatMap(_ => this._refugeService.fetchAnimals(this._id))
       );
   }
 
