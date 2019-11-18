@@ -15,6 +15,9 @@ export const environment = {
       oneSpecies: '/animals/species/:species',
       login: '/auth/login',
       profile: '/profile',
+      allRefuges: '/refuge',
+      oneRefuge: '/refuge/:id',
+      someAnimals: '/refuge/:id/animals'
     }
   }
 };

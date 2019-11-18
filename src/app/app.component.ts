@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import {Component, Input, OnChanges, SimpleChanges} from '@angular/core';
 import {AuthentificationService} from "./shared/services/authentification.service";
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -7,14 +8,19 @@ import {AuthentificationService} from "./shared/services/authentification.servic
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  constructor(private readonly _authSevice: AuthentificationService){
+
+  constructor(private readonly _authSevice: AuthentificationService, private readonly _route: Router){
   }
 
-  isLog(): boolean {
-    const currentUser =  this._authSevice.currentUserValue
-    if (currentUser)
-      return true;
-    else
-      return false;
+  login() {
+    this._route.navigate(['/login']);
+  }
+
+  logout() {
+    this._route.navigate(['/logout']);
+  }
+
+  isLogged(): boolean {
+    return this._authSevice.userLogged;
   }
 }

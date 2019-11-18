@@ -8,5 +8,6 @@ export interface Animal {
   diet: string;
   health: string;
   description?: string;
-  enterDate: number;
+  enterDate: any;
+  refugeId: string;
 }

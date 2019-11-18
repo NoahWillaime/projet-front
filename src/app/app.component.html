@@ -3,9 +3,9 @@
     <a [routerLink]="['/']">Adopt'un pet</a>
   </span>
   <span class="flex"></span>
-  <span class="toolbar-button" [ngSwitch]="isLog()">
-    <a *ngSwitchCase="false" [routerLink]="['/login']" >Login</a>
-    <a *ngSwitchDefault [routerLink]="['/logout']" >Logout</a>
+  <span class="toolbar-button">
+    <button mat-button *ngIf="isLogged()" (click)="logout()">Logout</button>
+    <button mat-button *ngIf="!isLogged()" (click)="login()">Login</button>
   </span>
 </mat-toolbar>
 <router-outlet></router-outlet>

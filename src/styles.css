@@ -25,8 +25,9 @@ app-card:hover .type-female:before {
 }
 
 app-card:hover .card-info {
+  visibility: visible;
   right: 0%;
-  background-color:  rgba(241, 242, 246,1.0);
+  background-color:  rgba(241, 242, 246,0.6);
   color: rgba(0, 0, 0, 1);
   transition: color 0.25s linear 0.75s, right 1s linear, background-color 0.25s linear;
 }
@@ -39,4 +40,9 @@ app-card:hover .info-text {
 app-card:hover .info-titre {
   color: rgba(116, 125, 140, 1);
   transition: color 0.25s linear 0.75s;
+}
+
+app-card:hover .card-button-del, app-card:hover .card-button-mod{
+  opacity: 1;
+  transition: opacity 0.25s linear 0.75s;
 }

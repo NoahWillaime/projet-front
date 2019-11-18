@@ -2,7 +2,7 @@
 <mat-grid-list gutterSize="15" cols="4" rowHeight="1:1.25">
   <mat-grid-tile *ngFor="let animal of animals">
     <mat-card class="card-back" [ngStyle]="{ 'background-image': 'url(' + animal.photo + ')'}"></mat-card>
-    <app-card [animal]="animal"></app-card>
+    <app-card (deleteAnimal)="delete($event)" [animal]="animal"></app-card>
   </mat-grid-tile>
 </mat-grid-list>
 </section>

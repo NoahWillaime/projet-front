@@ -21,10 +21,14 @@ import {MatInputModule} from "@angular/material/input";
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatButtonModule} from "@angular/material/button";
 import {JwtInterceptor} from "./interceptors/JwtInterceptor";
-import {AuthInterceptor} from "./interceptors/AuthInterceptor";
+import {AuthInterceptor} from   "./interceptors/AuthInterceptor";
 import { LogoutComponent } from './logout/logout.component';
 import { DialogComponent } from './shared/dialog/dialog.component';
 import { FormComponent } from './shared/form/form.component';
+import {MatIconModule} from '@angular/material/icon';
+import {MAT_DATE_LOCALE, MatNativeDateModule, MatSelectModule} from '@angular/material';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { UpdateComponent } from './update/update.component';
 
 @NgModule({
   declarations: [
@@ -37,8 +41,10 @@ import { FormComponent } from './shared/form/form.component';
     LoginComponent,
     LogoutComponent,
     DialogComponent,
-    FormComponent
+    FormComponent,
+    UpdateComponent
   ],
+  entryComponents: [ DialogComponent ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -52,7 +58,11 @@ import { FormComponent } from './shared/form/form.component';
     ReactiveFormsModule,
     MatInputModule,
     MatDialogModule,
-    MatButtonModule
+    MatButtonModule,
+    MatIconModule,
+    MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

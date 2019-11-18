@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Animal} from "../interfaces/animal";
 
 @Component({
@@ -9,8 +9,16 @@ import {Animal} from "../interfaces/animal";
 export class CardComponent implements OnInit {
   private _animal: Animal;
   private _isMale: boolean;
+  private readonly _delete$: EventEmitter<Animal>;
 
-  constructor() { }
+  constructor() {
+    this._delete$ = new EventEmitter<Animal>();
+  }
+
+  @Output('deleteAnimal')
+  get delete$(): EventEmitter<Animal> {
+    return this._delete$;
+  }
 
   @Input()
   set animal(animal: Animal) {
@@ -30,5 +38,9 @@ export class CardComponent implements OnInit {
     if (this._animal.gender === "Male") {
       this._isMale = true;
     }
+  }
+
+  delete(animal: Animal) {
+    this._delete$.emit(animal);
   }
 }

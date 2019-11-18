@@ -5,6 +5,8 @@ import {SpeciesComponent} from "./species/species.component";
 import {LoginComponent} from "./login/login.component";
 import {LogoutComponent} from "./logout/logout.component";
 import {AuthGuard} from "./AuthGuard";
+import {RefugeComponent} from './refuge/refuge.component';
+import {UpdateComponent} from "./update/update.component";
 
 
 const routes: Routes = [
@@ -13,6 +15,8 @@ const routes: Routes = [
   { path: 'species/:species', component: SpeciesComponent },
   { path: 'postalCode/:postalCode', component: SpeciesComponent },
   { path: 'species', component: SpeciesComponent },
+  { path: 'refuge', component: RefugeComponent },
+  { path: 'edit/:id/:refugeId', component: UpdateComponent },
   { path: 'login', component: LoginComponent },
   { path: 'logout', component: LogoutComponent, canActivate: [AuthGuard] }
 

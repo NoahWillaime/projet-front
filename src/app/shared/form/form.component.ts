@@ -3,7 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import {Animal} from '../interfaces/animal';
 
 @Component({
-  selector: 'nwt-form',
+  selector: 'app-form',
   templateUrl: './form.component.html',
   styleUrls: [ './form.component.css' ]
 })
@@ -83,13 +83,14 @@ export class FormComponent implements OnInit, OnChanges {
    * Function to handle component update
    */
   ngOnChanges(record) {
-    if (record.model && record.model.currentValue && record.model.currentValue.address) {
+    console.log(record.model);
+    if (record.model && record.model.currentValue) {
       this._model = record.model.currentValue;
       this._isUpdateMode = true;
+      this._model.enterDate = new Date(this._model.enterDate);
       this._form.patchValue(this._model);
     } else {
       this._model = {
-        id: '',
         name: '',
         photo: 'https://randomuser.me/api/portraits/lego/6.jpg',
         species: '',
@@ -98,6 +99,7 @@ export class FormComponent implements OnInit, OnChanges {
         diet: '',
         health: '',
         description: '',
+        refugeId: '',
         enterDate: 121212
       };
       this._isUpdateMode = false;
@@ -114,15 +116,12 @@ export class FormComponent implements OnInit, OnChanges {
   /**
    * Function to emit event to submit form and person
    */
-  submit(animal: Animal) {
-    this._submit$.emit(animal);
-  }
-
-  /**
-   * Function handle isManager checkbox value change
-   */
-  isManagerChecked(checked: boolean) {
-    this._form.patchValue({ isManager: checked });
+  submit(data: Animal) {
+    data.id = this._model.id;
+    data.refugeId = this._model.refugeId;
+    data.enterDate = data.enterDate.getTime();
+    console.log(data);
+    this._submit$.emit(data);
   }
 
   /**
@@ -130,7 +129,6 @@ export class FormComponent implements OnInit, OnChanges {
    */
   private _buildForm(): FormGroup {
     return new FormGroup({
-      id: new FormControl('0'),
       name: new FormControl('', Validators.compose([
         Validators.required, Validators.minLength(2)
       ])),
@@ -151,8 +149,8 @@ export class FormComponent implements OnInit, OnChanges {
         Validators.required, Validators.minLength(2)
       ])),
       description: new FormControl(''),
-      enterDate: new FormControl('', Validators.compose([
-        Validators.required, Validators.pattern('\\d{8}')
+      enterDate: new FormControl(new Date(), Validators.compose([
+        Validators.required
       ]))
     });
   }

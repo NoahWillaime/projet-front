@@ -25,6 +25,11 @@ export class SpeciesComponent implements OnInit {
     return this._animals;
   }
 
+
+  set species(species: string[]) {
+    this._species = [].concat(species);
+  }
+
   get species(): string[] {
     return this._species;
   }
@@ -52,7 +57,7 @@ export class SpeciesComponent implements OnInit {
   }
 
   animalsBySpecies(species: string): Animal[] {
-    return this._animals.filter(_ => _.species === species);
+    return this._animals.filter(_ => _.species.toLowerCase() === species.toLowerCase());
   }
 
 }

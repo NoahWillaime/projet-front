@@ -1,5 +1,6 @@
 export interface User {
-  id: number;
+  userId: string;
   username: string;
+  refugeId: string;
   token?: string;
 }
