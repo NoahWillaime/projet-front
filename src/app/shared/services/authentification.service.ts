@@ -26,6 +26,10 @@ export class AuthentificationService {
     return this.currentUserSubject.value;
   }
 
+  public get isLogged(): boolean {
+    return (this.currentUser == null);
+  }
+
   login(username: string, password: string): Observable<any> {
     return this._http.post<any>(this._backendURL.login, { username, password })
       .pipe(

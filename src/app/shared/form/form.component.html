@@ -1,5 +1,5 @@
 <h2 mat-dialog-title *ngIf="isUpdateMode">Update {{ form.get('name').value }}</h2>
-<h2 mat-dialog-title *ngIf="!isUpdateMode">Add new pet</h2>
+<h2 mat-dialog-title *ngIf="!isUpdateMode">Ajouter un Animal</h2>
 
 <mat-dialog-content>
   <form novalidate [formGroup]="form">
@@ -46,10 +46,10 @@
           <mat-form-field class="full-width" [class.mgb15]="form.get('breed').dirty && form.get('breed').invalid">
             <input matInput placeholder="Breed" formControlName="breed" minlength="2" required name="breed" />
             <mat-error *ngIf="form.get('breed').dirty && form.get('breed').hasError('required')">
-              Species is <strong>required</strong>
+              Breed is <strong>required</strong>
             </mat-error>
             <mat-error *ngIf="form.get('breed').dirty && form.get('breed').hasError('minlength')">
-              Species is <strong>2 chars min</strong>
+              Breed is <strong>2 chars min</strong>
             </mat-error>
           </mat-form-field>
         </td>
@@ -58,7 +58,11 @@
 
     <p>
       <mat-form-field class="full-width" [class.mgb15]="form.get('gender').dirty && form.get('gender').invalid">
-        <input matInput placeholder="Gender (male or female)" formControlName="gender" minlength="2" required name="gender" />
+        <mat-label>Gender</mat-label>
+        <mat-select formControlName="gender" required name="gender">
+          <mat-option value="Male" >Male</mat-option>
+          <mat-option value="Female">Female</mat-option>
+        </mat-select>
         <mat-error *ngIf="form.get('gender').dirty && form.get('gender').hasError('required')">
           Gender is <strong>required</strong>
         </mat-error>
@@ -100,12 +104,11 @@
 
     <p>
       <mat-form-field class="full-width">
-        <input matInput placeholder="Enter Date (ex: 20191212)" formControlName="enterDate" required name="enterDate" />
+        <input matInput [matDatepicker]="picker" placeholder="Choose a date" required formControlName="enterDate" name="enterDate">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
         <mat-error *ngIf="form.get('enterDate').dirty && form.get('enterDate').hasError('required')">
           Enter Date is <strong>required</strong>
-        </mat-error>
-        <mat-error *ngIf="form.get('enterDate').dirty && form.get('enterDate').hasError('pattern')">
-          Enter Date number must be <strong>8 digits</strong>
         </mat-error>
       </mat-form-field>
     </p>

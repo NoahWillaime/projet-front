@@ -9,4 +9,5 @@ export interface Animal {
   health: string;
   description?: string;
   enterDate: number;
+  refugeId: string;
 }

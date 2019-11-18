@@ -1,10 +1,9 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 import {Animal} from '../interfaces/animal';
-//import { Person } from '../interfaces/person';
 
 @Component({
-  selector: 'nwt-add-dialog',
+  selector: 'app-add-dialog',
   templateUrl: './dialog.component.html',
   styleUrls: [ './dialog.component.css' ]
 })
@@ -19,7 +18,7 @@ export class DialogComponent implements OnInit {
   /**
    * Returns person passed in dialog open
    */
-  get person(): Animal {
+  get animal(): Animal {
     return this._animal;
   }
 

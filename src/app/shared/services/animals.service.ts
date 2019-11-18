@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {Animal} from "../interfaces/animal";
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {environment} from "../../../environments/environment";
 import {Observable} from "rxjs";
 import {defaultIfEmpty, filter} from "rxjs/operators";
@@ -23,6 +23,7 @@ export class AnimalsService {
       health: 'health',
       description: 'description',
       enterDate: 1573982545,
+      refugeId: '',
     };
     this._backendURL = {};
 
@@ -57,5 +58,9 @@ export class AnimalsService {
         filter(_ => !!_),
         defaultIfEmpty([])
       );
+  }
+
+  create(animal: Animal): Observable<any> {
+    return this._http.post<Animal>(this._backendURL.allAnimals, animal, { headers: new HttpHeaders(Object.assign({ 'Content-Type': 'application/json' }, {})) });
   }
 }

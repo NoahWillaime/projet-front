@@ -25,6 +25,11 @@ export class SpeciesComponent implements OnInit {
     return this._animals;
   }
 
+
+  set species(species: string[]) {
+    this._species = [].concat(species);
+  }
+
   get species(): string[] {
     return this._species;
   }

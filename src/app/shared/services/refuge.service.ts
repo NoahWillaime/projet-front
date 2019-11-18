@@ -4,26 +4,15 @@ import {HttpClient} from "@angular/common/http";
 import {environment} from "../../../environments/environment";
 import {Observable} from "rxjs";
 import {defaultIfEmpty, filter} from "rxjs/operators";
+import {Refuge} from '../interfaces/refuge';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AnimalsService {
+export class RefugeService {
   private readonly _backendURL: any;
-  private readonly _defaultAnimal: Animal;
 
   constructor(private _http: HttpClient) {
-    this._defaultAnimal = {
-      name: 'animalname',
-      photo: 'https://randomuser.me/api/portraits/men/37.jpg',
-      species: 'species',
-      breed: 'breed',
-      gender: 'gender',
-      diet: 'diet',
-      health: 'health',
-      description: 'description',
-      enterDate: 1573982545,
-    };
     this._backendURL = {};
 
     let backUrl =  `${environment.backend.protocol}://${environment.backend.host}:${environment.backend.port}`;
@@ -31,31 +20,23 @@ export class AnimalsService {
       .forEach(k => this._backendURL[k] = `${backUrl}${environment.backend.endpoints[k]}`);
   }
 
-  fetch(): Observable<Animal[]> {
-    return this._http.get<Animal[]>(this._backendURL.allAnimals)
+  fetch(): Observable<Refuge[]> {
+    return this._http.get<Refuge[]>(this._backendURL.allRefuges)
       .pipe(
         filter(_ => !!_),
         defaultIfEmpty([])
       );
   }
 
-  fetchOne(id: string): Observable<Animal> {
-    return this._http.get<Animal>(this._backendURL.oneAnimal.replace(':id', id));
+  fetchOne(id: string): Observable<Refuge> {
+    return this._http.get<Refuge>(this._backendURL.oneRefuge.replace(':id', id));
   }
 
-  fetchSpecies(): Observable<string[]> {
-    return this._http.get<string[]>(this._backendURL.allSpecies)
+  fetchAnimals(id: string): Observable<Animal[]> {
+    return this._http.get<Animal[]>(this._backendURL.someAnimals.replace(':id', id))
       .pipe(
         filter(_ => !!_),
         defaultIfEmpty([])
       )
-  }
-
-  fetchOneSpecies(species: string): Observable<Animal[]> {
-    return this._http.get<Animal[]>(this._backendURL.oneSpecies.replace(':species', species))
-      .pipe(
-        filter(_ => !!_),
-        defaultIfEmpty([])
-      );
   }
 }
