@@ -23,6 +23,8 @@ import {MatButtonModule} from "@angular/material/button";
 import {JwtInterceptor} from "./interceptors/JwtInterceptor";
 import {AuthInterceptor} from "./interceptors/AuthInterceptor";
 import { LogoutComponent } from './logout/logout.component';
+import { DialogComponent } from './shared/dialog/dialog.component';
+import { FormComponent } from './shared/form/form.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,9 @@ import { LogoutComponent } from './logout/logout.component';
     SpeciesComponent,
     RefugeComponent,
     LoginComponent,
-    LogoutComponent
+    LogoutComponent,
+    DialogComponent,
+    FormComponent
   ],
   imports: [
     BrowserModule,
