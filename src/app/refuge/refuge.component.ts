@@ -73,9 +73,6 @@ export class RefugeComponent implements OnInit {
     this._animalsDialog = this._dialog.open(DialogComponent, {
       width: '500px',
       disableClose: true,
-      data: {
-        refugeId: this._id,
-      }
     });
     this._animalsDialog.afterClosed()
       .pipe(
@@ -84,11 +81,20 @@ export class RefugeComponent implements OnInit {
         flatMap(_ => this._add(_))
       )
       .subscribe(
-        (animals: Animal[]) => this._animals = animals,
+        (animals: Animal[]) => this._animals = [].concat(animals),
         _ => this._dialogStatus = 'inactive',
         () => this._dialogStatus = 'inactive'
       );
   }
 
+  delete(animal: Animal) {
+    this._animalsService.delete(animal.id)
+      .pipe(
+        flatMap(_ => this._refugeService.fetchAnimals(this._id))
+      )
+      .subscribe(
+        (animals: Animal[]) => this._animals = [].concat(animals),
+      );
+  }
 
 }

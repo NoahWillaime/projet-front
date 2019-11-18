@@ -28,6 +28,7 @@ import { FormComponent } from './shared/form/form.component';
 import {MatIconModule} from '@angular/material/icon';
 import {MAT_DATE_LOCALE, MatNativeDateModule, MatSelectModule} from '@angular/material';
 import {MatDatepickerModule} from '@angular/material/datepicker';
+import { UpdateComponent } from './update/update.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
     LoginComponent,
     LogoutComponent,
     DialogComponent,
-    FormComponent
+    FormComponent,
+    UpdateComponent
   ],
   entryComponents: [ DialogComponent ],
   imports: [

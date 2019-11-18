@@ -21,7 +21,6 @@ export class AppComponent {
   }
 
   isLogged(): boolean {
-    console.log(this._authSevice.userLogged);
     return this._authSevice.userLogged;
   }
 }

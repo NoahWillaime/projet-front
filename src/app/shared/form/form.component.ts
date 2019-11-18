@@ -11,7 +11,7 @@ export class FormComponent implements OnInit, OnChanges {
   // private property to store update mode flag
   private _isUpdateMode: boolean;
   // private property to store model value
-  private _model: any;
+  private _model: Animal;
   // private property to store cancel$ value
   private readonly _cancel$: EventEmitter<void>;
   // private property to store submit$ value
@@ -83,9 +83,11 @@ export class FormComponent implements OnInit, OnChanges {
    * Function to handle component update
    */
   ngOnChanges(record) {
-    if (record.model && record.model.currentValue && record.model.currentValue.address) {
+    console.log(record.model);
+    if (record.model && record.model.currentValue) {
       this._model = record.model.currentValue;
       this._isUpdateMode = true;
+      this._model.enterDate = new Date(this._model.enterDate);
       this._form.patchValue(this._model);
     } else {
       this._model = {
@@ -114,8 +116,11 @@ export class FormComponent implements OnInit, OnChanges {
   /**
    * Function to emit event to submit form and person
    */
-  submit(data: any) {
+  submit(data: Animal) {
+    data.id = this._model.id;
+    data.refugeId = this._model.refugeId;
     data.enterDate = data.enterDate.getTime();
+    console.log(data);
     this._submit$.emit(data);
   }
 
@@ -144,7 +149,7 @@ export class FormComponent implements OnInit, OnChanges {
         Validators.required, Validators.minLength(2)
       ])),
       description: new FormControl(''),
-      enterDate: new FormControl('', Validators.compose([
+      enterDate: new FormControl(new Date(), Validators.compose([
         Validators.required
       ]))
     });

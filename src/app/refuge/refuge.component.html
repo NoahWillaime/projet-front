@@ -1,26 +1,29 @@
-<section>
-<mat-card>
-  <mat-card-title>
+<section class="section-refuge section-refuge-info">
+  <h2>
     {{ refuge.name }}
-  </mat-card-title>
-  <mat-card-subtitle>
-    {{ refuge.address.street }} {{ refuge.address.city  }} {{ refuge.address.postalCode }}
-  </mat-card-subtitle>
-  <mat-card-subtitle>
-    {{ refuge.phone }}
-  </mat-card-subtitle>
-  <mat-card-subtitle>
-    {{ refuge.email }}
-  </mat-card-subtitle>
-</mat-card>
+  </h2>
+  <div class="refuge-infos">
+    <div class="refuge-info">
+      <mat-icon>home</mat-icon>
+      <span> {{ refuge.address.street }}, {{ refuge.address.postalCode }} {{ refuge.address.city  }} </span>
+    </div>
+    <div class="refuge-info">
+      <mat-icon> contact_phone</mat-icon>
+      <span>{{ refuge.phone }}</span>
+    </div>
+    <div class="refuge-info">
+      <mat-icon> contacts</mat-icon>
+      <span>{{ refuge.email }}</span>
+    </div>
+  </div>
 </section>
 
-<section>
+<section class="section-refuge">
   <div class="animals-title-sec">
     <h1>Animaux du refuge</h1>
     <button mat-mini-fab (click)="showDialog()">
       <mat-icon>add</mat-icon>
     </button>
   </div>
-  <app-animals-grid [animals]="animals"></app-animals-grid>
+  <app-animals-grid (deleteAnimal)="delete($event)" [animals]="animals"></app-animals-grid>
 </section>
