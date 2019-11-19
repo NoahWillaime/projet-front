@@ -17,7 +17,10 @@ export const environment = {
       profile: '/profile',
       allRefuges: '/refuge',
       oneRefuge: '/refuge/:id',
-      someAnimals: '/refuge/:id/animals'
+      refugeByUser: '/refuge/user/:id',
+      someAnimals: '/refuge/:id/animals',
+      allUser: '/benevoles',
+      oneUser: '/benevoles/:id'
     }
   }
 };

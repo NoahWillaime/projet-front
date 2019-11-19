@@ -4,7 +4,7 @@ import {AuthentificationService} from "../shared/services/authentification.servi
 import {first} from "rxjs/operators";
 import {Router} from "@angular/router";
 import {HttpErrorResponse} from "@angular/common/http";
-import {User} from '../shared/interfaces/User';
+import {Benevole} from '../shared/interfaces/benevole';
 import {RefugeService} from '../shared/services/refuge.service';
 import {Refuge} from '../shared/interfaces/refuge';
 
@@ -43,11 +43,12 @@ export class LoginComponent implements OnInit {
     this._authentificationService.logout();
   }
 
-  onSubmit(user: any){
-    this._authentificationService.login(user.username, user.password)
+  onSubmit(benevole: any){
+    this._authentificationService.login(benevole.username, benevole.password)
       .subscribe(
-        (data: User) => {
-              this._router.navigate(['/refuge'], { queryParams: { id: data.refugeId }});
+        (data: Benevole) => {
+          console.log(data);
+          this._router.navigate(['/profil'], { queryParams: { id: data.id }});
         },
         error => {
           this._error = error;

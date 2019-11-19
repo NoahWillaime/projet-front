@@ -1,4 +1,13 @@
-<section class="section-refuge section-refuge-info">
+<section *ngIf="!isRefuge" class="section-refuge">
+  <h2>
+    Ajouter mon refuge
+  </h2>
+  <button mat-fab>
+    <mat-icon>add</mat-icon>
+  </button>
+</section>
+
+<section *ngIf="isRefuge" class="section-refuge section-refuge-info">
   <h2>
     {{ refuge.name }}
   </h2>
@@ -18,7 +27,7 @@
   </div>
 </section>
 
-<section class="section-refuge">
+<section *ngIf="isRefuge" class="section-refuge">
   <div class="animals-title-sec">
     <h1>Animaux du refuge</h1>
     <button mat-mini-fab (click)="showDialog()">

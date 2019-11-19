@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../../../environments/environment";
 import {BehaviorSubject, Observable} from "rxjs";
-import {User} from "../interfaces/User";
+import {Benevole} from "../interfaces/benevole";
 import {map} from "rxjs/operators";
 
 @Injectable({
@@ -10,19 +10,19 @@ import {map} from "rxjs/operators";
 })
 export class AuthentificationService {
   private readonly _backendURL: any;
-  private currentUserSubject: BehaviorSubject<User>;
-  public currentUser: Observable<User>;
+  private currentUserSubject: BehaviorSubject<Benevole>;
+  public currentUser: Observable<Benevole>;
 
   constructor(private _http: HttpClient) {
     let backUrl =  `${environment.backend.protocol}://${environment.backend.host}:${environment.backend.port}`;
     this._backendURL = {};
     Object.keys(environment.backend.endpoints)
       .forEach(k => this._backendURL[k] = `${backUrl}${environment.backend.endpoints[k]}`);
-    this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
+    this.currentUserSubject = new BehaviorSubject<Benevole>(JSON.parse(localStorage.getItem('currentUser')));
     this.currentUser = this.currentUserSubject.asObservable();
   }
 
-  public get currentUserValue(): User {
+  public get currentUserValue(): Benevole {
     return this.currentUserSubject.value;
   }
 
