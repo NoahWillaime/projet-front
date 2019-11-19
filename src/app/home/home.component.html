@@ -1,1 +1,11 @@
-<app-species></app-species>
+<section class="home-title">
+  <h1>Bienvenue sur Adopt'un pet</h1>
+</section>
+<section class="section-principal">
+    <button mat-raised-button (click)="changeCurrent('')" [class.button-select]="isCurrent('')">Tous</button>
+    <button mat-raised-button (click)="changeCurrent('species')" [class.button-select]="isCurrent('species')">Espèces</button>
+</section>
+<section class="section-principal">
+  <app-animals *ngIf="isCurrent('')"></app-animals>
+  <app-species *ngIf="isCurrent('species')"></app-species>
+</section>

@@ -1,3 +1,22 @@
+div {
+  display: flex;
+  flex-direction: column;
+}
+
+.button-register {
+  margin: auto;
+  margin-top: 25px;
+  background-color: #0652DD;
+  color: #ecf0f1;
+  transition: color 0.25s linear, background-color 0.25s linear;
+}
+
+.button-register:hover {
+  background-color: #ecf0f1;
+  color: #0652DD;
+  transition: color 0.25s linear, background-color 0.25s linear;
+}
+
 .login-card{
   width: 30em;
   margin: auto;

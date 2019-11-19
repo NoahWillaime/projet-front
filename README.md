@@ -1,27 +1,29 @@
-# ProjetFront
+# Adopt'un pet [partie Front]
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.19.
+Ce projet a été généré avec [Angular CLI](https://github.com/angular/angular-cli) version 8.3.19.
 
-## Development server
+Back-end : https://github.com/NoahWillaime/projet-back
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Avant de commencer
 
-## Code scaffolding
+Ce projet nécessite l'installation de NodeJs.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+##Mise en place
 
-## Build
+-   Cloner le projet et lancer les commandes :
+- `npm install -g npm@latest`
+- `npm install -g yarn`
+- `yarn global add @angular/cli`
+-   Se rendre dans le dossier racine du projet /projet-back et lancer les commandes :
+-   ng config --global cli.packageManager yarn
+-   yarn install
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+##Lancement du serveur
 
-## Running unit tests
+Lancer la commande `yarn run start` ou `ng serve`.
+Ou lancer directement l'application si vous utilisez WebStorm (ou Intellij Ultimate).
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-## Running end-to-end tests
+##  Plus d'aide
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+`ng help` ou directement [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).

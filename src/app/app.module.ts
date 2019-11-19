@@ -33,6 +33,9 @@ import { ProfilComponent } from './profil/profil.component';
 import { InscriptionComponent } from './inscription/inscription.component';
 import {MatStepperModule} from "@angular/material/stepper";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
+import { AnimalsComponent } from './animals/animals.component';
+import {MatButtonToggleModule} from "@angular/material/button-toggle";
+import {MatMenuModule} from '@angular/material/menu';
 
 @NgModule({
   declarations: [
@@ -48,7 +51,8 @@ import {MatSnackBarModule} from "@angular/material/snack-bar";
     FormComponent,
     UpdateComponent,
     ProfilComponent,
-    InscriptionComponent
+    InscriptionComponent,
+    AnimalsComponent
   ],
   entryComponents: [ DialogComponent ],
   imports: [
@@ -70,7 +74,9 @@ import {MatSnackBarModule} from "@angular/material/snack-bar";
     MatDatepickerModule,
     MatNativeDateModule,
     MatStepperModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatButtonToggleModule,
+    MatMenuModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
