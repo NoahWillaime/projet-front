@@ -8,7 +8,7 @@ Back-end : https://github.com/NoahWillaime/projet-back
 
 Ce projet nécessite l'installation de NodeJs.
 
-##Mise en place
+## Mise en place
 
 -   Cloner le projet et lancer les commandes :
 - `npm install -g npm@latest`
@@ -18,12 +18,12 @@ Ce projet nécessite l'installation de NodeJs.
 -   ng config --global cli.packageManager yarn
 -   yarn install
 
-##Lancement du serveur
+## Lancement du serveur
 
 Lancer la commande `yarn run start` ou `ng serve`.
 Ou lancer directement l'application si vous utilisez WebStorm (ou Intellij Ultimate).
 
 
-##  Plus d'aide
+## Plus d'aide
 
 `ng help` ou directement [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
