@@ -15,6 +15,7 @@ const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'species/:species', component: SpeciesComponent },
+  { path: 'postalCode/:postalCode', component: SpeciesComponent },
   { path: 'species', component: SpeciesComponent },
   { path: 'refuge', component: RefugeComponent },
   { path: 'edit/:id', component: UpdateComponent },
