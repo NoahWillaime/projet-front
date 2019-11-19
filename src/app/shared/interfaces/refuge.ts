@@ -3,8 +3,8 @@ export interface Refuge {
   name: string;
   address?: Address;
   phone: string;
-  userId: string;
   email: string;
+  userId: string;
 }
 
 export interface Address {

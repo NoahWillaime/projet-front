@@ -1,6 +1,6 @@
 import {Injectable} from "@angular/core";
 import {Animal} from "../interfaces/animal";
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {environment} from "../../../environments/environment";
 import {Observable} from "rxjs";
 import {defaultIfEmpty, filter} from "rxjs/operators";
@@ -43,4 +43,19 @@ export class RefugeService {
         defaultIfEmpty([])
       )
   }
+
+  create(refuge: Refuge): Observable<any> {
+    return this._http.post<Refuge>(this._backendURL.allRefuges, refuge, { headers: new HttpHeaders(Object.assign({ 'Content-Type': 'application/json' }, {})) });
+  }
+
+  update(refuge: Refuge): Observable<any> {
+    console.log(refuge);
+    return this._http.put<Refuge>(this._backendURL.oneRefuge.replace(':id', refuge.id), { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) });
+  }
+
+  delete(id: string): Observable<any> {
+    return this._http.delete(this._backendURL.oneRefuge.replace(':id', id))
+  }
+
+
 }

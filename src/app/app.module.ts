@@ -33,6 +33,8 @@ import { ProfilComponent } from './profil/profil.component';
 import { InscriptionComponent } from './inscription/inscription.component';
 import {MatStepperModule} from "@angular/material/stepper";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
+import { DialogRefugeComponent } from './shared/dialog/dialog-refuge/dialog-refuge.component';
+import { FormRefugeComponent } from './shared/form/form-refuge/form-refuge.component';
 import { AnimalsComponent } from './animals/animals.component';
 import {MatButtonToggleModule} from "@angular/material/button-toggle";
 import {MatMenuModule} from '@angular/material/menu';
@@ -52,9 +54,12 @@ import {MatMenuModule} from '@angular/material/menu';
     UpdateComponent,
     ProfilComponent,
     InscriptionComponent,
-    AnimalsComponent
+    AnimalsComponent,
+    InscriptionComponent,
+    DialogRefugeComponent,
+    FormRefugeComponent
   ],
-  entryComponents: [ DialogComponent ],
+  entryComponents: [ DialogRefugeComponent, DialogComponent ],
   imports: [
     BrowserModule,
     AppRoutingModule,

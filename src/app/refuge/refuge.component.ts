@@ -8,7 +8,9 @@ import {merge, Observable} from 'rxjs';
 import {MatDialog, MatDialogRef} from '@angular/material';
 import {DialogComponent} from '../shared/dialog/dialog.component';
 import {AnimalsService} from '../shared/services/animals.service';
+import {DialogRefugeComponent} from '../shared/dialog/dialog-refuge/dialog-refuge.component';
 import {AuthentificationService} from "../shared/services/authentification.service";
+import {Benevole} from '../shared/interfaces/benevole';
 
 @Component({
   selector: 'app-refuge',
@@ -17,10 +19,13 @@ import {AuthentificationService} from "../shared/services/authentification.servi
 })
 export class RefugeComponent implements OnInit {
   private _isRefuge: boolean;
+  private  _benevole: Benevole;
   private _refuge: Refuge;
   private _animals: Animal[];
   private _dialogStatus: string;
+  private _dialogRefugeStatus: string;
   private _animalsDialog: MatDialogRef<DialogComponent>;
+  private _refugeDialog: MatDialogRef<DialogRefugeComponent>;
   private _isOwned: boolean;
 
   constructor(private readonly _refugeService: RefugeService,
@@ -32,6 +37,7 @@ export class RefugeComponent implements OnInit {
     this._refuge.address = {} as Address;
     this._animals = [];
     this._dialogStatus = 'inactive';
+    this._dialogRefugeStatus = 'inactive';
     this._isRefuge = false;
     this._isOwned = false;
   }
@@ -63,6 +69,7 @@ export class RefugeComponent implements OnInit {
   }
 
   ngOnInit() {
+    this._benevole = JSON.parse(localStorage.getItem('currentUser'));
     this._route.queryParams
       .pipe(
         filter(_ => !!_.id),
@@ -96,6 +103,14 @@ export class RefugeComponent implements OnInit {
       );
   }
 
+  private _addRefuge(refuge: Refuge): Observable<Refuge> {
+    return this._refugeService
+      .create(refuge)
+      .pipe(
+        flatMap(_ => this._refugeService.fectchOneByUser(this._benevole.id))
+      );
+  }
+
   showDialog() {
     this._dialogStatus = 'active';
     this._animalsDialog = this._dialog.open(DialogComponent, {
@@ -115,13 +130,42 @@ export class RefugeComponent implements OnInit {
       );
   }
 
-  delete(animal: Animal) {
-    this._animalsService.delete(animal.id)
+  showRefugeDialog() {
+    this._dialogRefugeStatus = 'active';
+    this._refugeDialog = this._dialog.open(DialogRefugeComponent, {
+      width: '500px',
+      disableClose: true,
+    });
+    this._refugeDialog.afterClosed()
       .pipe(
-        flatMap(_ => this._refugeService.fetchAnimals(this.refuge.id))
+        filter(_ => !!_),
+        flatMap(_ => this._addRefuge(_))
       )
       .subscribe(
-        (animals: Animal[]) => this._animals = [].concat(animals),
+        (refuge: Refuge) => this._refuge = refuge,
+        _ => this._dialogRefugeStatus = 'inactive',
+        () => this._dialogRefugeStatus = 'inactive'
+      );
+  }
+
+
+  delete(animal: Animal) {
+  this._animalsService.delete(animal.id)
+    .pipe(
+      flatMap(_ => this._refugeService.fetchAnimals(this._refuge.id))
+    )
+    .subscribe(
+      (animals: Animal[]) => this._animals = [].concat(animals),
+    );
+  }
+
+  deleteRefuge(refuge: Refuge) {
+    this._refugeService.delete(refuge.id)
+      .pipe(
+        flatMap(_ => this._refugeService.fectchOneByUser(this.refuge.id))
+      )
+      .subscribe(
+        (refuge: Refuge) => this._refuge = refuge,
       );
   }
 
