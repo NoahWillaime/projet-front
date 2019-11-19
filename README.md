@@ -15,8 +15,8 @@ Ce projet nécessite l'installation de NodeJs.
 - `npm install -g yarn`
 - `yarn global add @angular/cli`
 -   Se rendre dans le dossier racine du projet /projet-back et lancer les commandes :
--   ng config --global cli.packageManager yarn
--   yarn install
+-   `ng config --global cli.packageManager yarn`
+-   `yarn install`
 
 ## Lancement du serveur
 
