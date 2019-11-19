@@ -1,4 +1,4 @@
-<section *ngIf="!isRefuge" class="section-refuge">
+<section *ngIf="!isRefuge" class="section-principal">
   <h2>
     Ajouter mon refuge
   </h2>
@@ -7,7 +7,7 @@
   </button>
 </section>
 
-<section *ngIf="isRefuge" class="section-refuge section-refuge-info">
+<section *ngIf="isRefuge" class="section-principal section-refuge-info">
   <h2>
     {{ refuge.name }}
   </h2>
@@ -27,12 +27,12 @@
   </div>
 </section>
 
-<section *ngIf="isRefuge" class="section-refuge">
+<section *ngIf="isRefuge" class="section-principal">
   <div class="animals-title-sec">
     <h1>Animaux du refuge</h1>
-    <button mat-mini-fab (click)="showDialog()">
+    <button *ngIf="isLogIn() && isOwned" mat-mini-fab (click)="showDialog()">
       <mat-icon>add</mat-icon>
     </button>
   </div>
-  <app-animals-grid (deleteAnimal)="delete($event)" [animals]="animals"></app-animals-grid>
+  <app-animals-grid (deleteAnimal)="delete($event)" [animals]="animals" [isOwned]="isOwned"></app-animals-grid>
 </section>

@@ -1,4 +1,7 @@
-<app-refuge *ngIf="!hadError && refuge" [refuge]="refuge"></app-refuge>
+<section>
+  <h1>Bienvenue {{ benev.firstname }} {{ benev.lastname }}</h1>
+</section>
+<app-refuge *ngIf="!hadError && refuge" [refuge]="refuge" [isOwned]="true"></app-refuge>
 <div *ngIf="hadError">
   <mat-error> Une erreur est survenue ..</mat-error>
 </div>

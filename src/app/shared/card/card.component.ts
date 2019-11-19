@@ -1,5 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Animal} from "../interfaces/animal";
+import {AuthentificationService} from "../services/authentification.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-card',
@@ -10,9 +12,21 @@ export class CardComponent implements OnInit {
   private _animal: Animal;
   private _isMale: boolean;
   private readonly _delete$: EventEmitter<Animal>;
+  private _isOwned: boolean;
 
-  constructor() {
+  constructor(private readonly _authService: AuthentificationService, private readonly _route: Router) {
     this._delete$ = new EventEmitter<Animal>();
+    this._isOwned = false;
+  }
+
+
+  get isOwned(): boolean {
+    return this._isOwned;
+  }
+
+  @Input()
+  set isOwned(value: boolean) {
+    this._isOwned = value;
   }
 
   @Output('deleteAnimal')
@@ -38,6 +52,14 @@ export class CardComponent implements OnInit {
     if (this._animal.gender === "Male") {
       this._isMale = true;
     }
+  }
+
+  goToRefuge() {
+    this._route.navigate(['/refuge'], { queryParams: { id: this._animal.refugeId }});
+  }
+
+  isLogIn(): boolean {
+    return this._authService.userLogged;
   }
 
   delete(animal: Animal) {

@@ -1,0 +1,11 @@
+section {
+  display: flex;
+  justify-content: center;
+  margin-top: 2.5%;
+}
+
+section h1 {
+  display: inline-block;
+  margin: auto;
+  font-size: 3.5em;
+}

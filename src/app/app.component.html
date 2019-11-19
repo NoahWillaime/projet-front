@@ -1,9 +1,13 @@
 <mat-toolbar>
-  <span class="toolbar-button">
-    <a [routerLink]="['/']">Adopt'un pet</a>
+  <span class="toolbar-img toolbar-button">
+    <a [routerLink]="['/']">
+      <img src="assets/images/logo.png">
+      <span>Adopt'un pet</span>
+    </a>
   </span>
   <span class="flex"></span>
   <span class="toolbar-button">
+    <a mat-button [routerLink]="['/profil']">Profile</a>
     <button mat-button *ngIf="isLogged()" (click)="logout()">Logout</button>
     <button mat-button *ngIf="!isLogged()" (click)="login()">Login</button>
   </span>

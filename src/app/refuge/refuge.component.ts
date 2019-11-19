@@ -8,6 +8,7 @@ import {merge, Observable} from 'rxjs';
 import {MatDialog, MatDialogRef} from '@angular/material';
 import {DialogComponent} from '../shared/dialog/dialog.component';
 import {AnimalsService} from '../shared/services/animals.service';
+import {AuthentificationService} from "../shared/services/authentification.service";
 
 @Component({
   selector: 'app-refuge',
@@ -15,22 +16,33 @@ import {AnimalsService} from '../shared/services/animals.service';
   styleUrls: ['./refuge.component.css']
 })
 export class RefugeComponent implements OnInit {
-  private _id: string;
   private _isRefuge: boolean;
   private _refuge: Refuge;
   private _animals: Animal[];
   private _dialogStatus: string;
   private _animalsDialog: MatDialogRef<DialogComponent>;
+  private _isOwned: boolean;
 
   constructor(private readonly _refugeService: RefugeService,
               private readonly _animalsService: AnimalsService,
               private readonly _route: ActivatedRoute,
-              private _dialog: MatDialog) {
+              private _dialog: MatDialog,
+              private readonly _authService: AuthentificationService) {
     this._refuge = {} as Refuge;
     this._refuge.address = {} as Address;
     this._animals = [];
     this._dialogStatus = 'inactive';
     this._isRefuge = false;
+    this._isOwned = false;
+  }
+
+  get isOwned() {
+    return this._isOwned;
+  }
+
+  @Input()
+  set isOwned(value) {
+    this._isOwned = value;
   }
 
   get animals(): Animal[] {
@@ -51,22 +63,36 @@ export class RefugeComponent implements OnInit {
   }
 
   ngOnInit() {
+    this._route.queryParams
+      .pipe(
+        filter(_ => !!_.id),
+        flatMap(_ => this._refugeService.fetchOne(_.id))
+      )
+      .subscribe((refuge: Refuge) => { this._refuge = refuge; this._fetchAnimals() });
     if (this._refuge.id) {
-      this._refugeService.fetchAnimals(this._refuge.id)
-        .pipe(
-          filter(_ => !!_),
-          defaultIfEmpty([])
-        )
-        .subscribe((animals: Animal[]) => this._animals = [].concat(animals));
-      this._isRefuge = true;
+      this._fetchAnimals();
     }
+  }
+
+  isLogIn(): boolean {
+    return this._authService.userLogged;
+  }
+
+  private _fetchAnimals() {
+    this._refugeService.fetchAnimals(this._refuge.id)
+      .pipe(
+        filter(_ => !!_),
+        defaultIfEmpty([])
+      )
+      .subscribe((animals: Animal[]) => this._animals = [].concat(animals));
+    this._isRefuge = true;
   }
 
   private _add(animal: Animal): Observable<Animal[]> {
     return this._animalsService
       .create(animal)
       .pipe(
-        flatMap(_ => this._refugeService.fetchAnimals(this._id))
+        flatMap(_ => this._refugeService.fetchAnimals(this.refuge.id))
       );
   }
 
@@ -79,7 +105,7 @@ export class RefugeComponent implements OnInit {
     this._animalsDialog.afterClosed()
       .pipe(
         filter(_ => !!_),
-        tap((animal: Animal) => animal.refugeId = this._id),
+        tap((animal: Animal) => animal.refugeId = this.refuge.id),
         flatMap(_ => this._add(_))
       )
       .subscribe(
@@ -92,7 +118,7 @@ export class RefugeComponent implements OnInit {
   delete(animal: Animal) {
     this._animalsService.delete(animal.id)
       .pipe(
-        flatMap(_ => this._refugeService.fetchAnimals(this._id))
+        flatMap(_ => this._refugeService.fetchAnimals(this.refuge.id))
       )
       .subscribe(
         (animals: Animal[]) => this._animals = [].concat(animals),
