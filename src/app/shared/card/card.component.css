@@ -72,14 +72,16 @@
 
 .card-button-del, .card-button-mod{
   margin: 15px;
-  background-color: rgba(37, 204, 247, 1);
-  color: rgba(236, 240, 241, 1);
+  background-color: rgba(236, 240, 241, 1);
+  color: rgba(6, 82, 221, 1);
   opacity: 0;
-  transition: opacity 0.25s linear;
+  transition: opacity 0.25s linear, background-color 0.25s linear, color 0.25s linear;
 }
 
 .card-button-del:hover, .card-button-mod:hover {
-  background-color: #0652DD;
+  background-color:rgba(6, 82, 221, 1);
+  color: rgba(236, 240, 241, 1);
+  transition: opacity 0.25s linear, background-color 0.25s linear, color 0.25s linear;
 }
 
 .refuge-icon {
@@ -92,14 +94,16 @@
 
 .card-button-ref {
   margin: 15px;
-  background-color: rgba(37, 204, 247, 1);
-  color: rgba(236, 240, 241, 1);
+  background-color: rgba(236, 240, 241, 1);
+  color: rgba(6, 82, 221, 1);
   opacity: 0;
-  transition: opacity 0.25s linear;
+  transition: opacity 0.25s linear, background-color 0.25s linear, color 0.25s linear;
 }
 
 .card-button-ref:hover {
   background-color: #0652DD;
+  color: rgba(236, 240, 241, 1);
+  transition: background-color 0.25s linear;
 }
 
 @media screen and (max-width: 1250px) {

@@ -1,7 +1,8 @@
-<section *ngIf="!isRefuge" class="section-principal">
+<section *ngIf="!isRefuge" class="section-principal section-add-refuge">
   <h2>
     Ajouter mon refuge
   </h2>
+  <button mat-fab class="button-add">
   <button mat-fab (click)="showRefugeDialog()">
     <mat-icon>add</mat-icon>
   </button>

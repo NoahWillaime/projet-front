@@ -35,6 +35,9 @@ import {MatStepperModule} from "@angular/material/stepper";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
 import { DialogRefugeComponent } from './shared/dialog/dialog-refuge/dialog-refuge.component';
 import { FormRefugeComponent } from './shared/form/form-refuge/form-refuge.component';
+import { AnimalsComponent } from './animals/animals.component';
+import {MatButtonToggleModule} from "@angular/material/button-toggle";
+import {MatMenuModule} from '@angular/material/menu';
 
 @NgModule({
   declarations: [
@@ -50,6 +53,8 @@ import { FormRefugeComponent } from './shared/form/form-refuge/form-refuge.compo
     FormComponent,
     UpdateComponent,
     ProfilComponent,
+    InscriptionComponent,
+    AnimalsComponent,
     InscriptionComponent,
     DialogRefugeComponent,
     FormRefugeComponent
@@ -74,7 +79,9 @@ import { FormRefugeComponent } from './shared/form/form-refuge/form-refuge.compo
     MatDatepickerModule,
     MatNativeDateModule,
     MatStepperModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatButtonToggleModule,
+    MatMenuModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

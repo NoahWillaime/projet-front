@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {AnimalsService} from "../shared/services/animals.service";
 import {ActivatedRoute} from "@angular/router";
 import {Animal} from "../shared/interfaces/animal";
@@ -25,7 +25,7 @@ export class SpeciesComponent implements OnInit {
     return this._animals;
   }
 
-
+  @Input()
   set species(species: string[]) {
     this._species = [].concat(species);
   }
