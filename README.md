@@ -21,7 +21,7 @@ Ce projet nécessite l'installation de NodeJs.
 ## Lancement du serveur
 
 Lancer la commande `yarn run start` ou `ng serve`.
-Ou lancer directement l'application si vous utilisez WebStorm (ou Intellij Ultimate).
+Ou lancer directement le serveur si vous utilisez WebStorm (ou Intellij Ultimate).
 
 
 ## Plus d'aide
