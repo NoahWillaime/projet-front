@@ -1,6 +1,7 @@
 import {Component, EventEmitter, Input, OnChanges, OnInit, Output} from '@angular/core';
 import {Refuge} from '../../interfaces/refuge';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {Benevole} from '../../interfaces/benevole';
 
 @Component({
   selector: 'app-form-refuge',
@@ -19,6 +20,8 @@ export class FormRefugeComponent implements OnInit, OnChanges {
   private readonly _submit$: EventEmitter<Refuge>;
   // private property to store form value
   private readonly _form: FormGroup;
+
+  private  _benevole: Benevole;
 
   /**
    * Component constructor
@@ -78,13 +81,14 @@ export class FormRefugeComponent implements OnInit, OnChanges {
    * OnInit implementation
    */
   ngOnInit() {
+    this._benevole = JSON.parse(localStorage.getItem('currentUser'));
   }
 
   /**
    * Function to handle component update
    */
   ngOnChanges(record) {
-    console.log(record.model);
+    console.log(record.model); //TODO console.log
     if (record.model && record.model.currentValue) {
       this._model = record.model.currentValue;
       this._isUpdateMode = true;
@@ -117,7 +121,7 @@ export class FormRefugeComponent implements OnInit, OnChanges {
    * Function to emit event to submit form and person
    */
   submit(data: Refuge) {
-    //data.userId = '';
+    data.userId =  this._benevole.id;
     this._submit$.emit(data);
   }
 

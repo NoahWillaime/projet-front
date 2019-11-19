@@ -64,9 +64,8 @@ export class AnimalsService {
     return this._http.post<Animal>(this._backendURL.allAnimals, animal, { headers: new HttpHeaders(Object.assign({ 'Content-Type': 'application/json' }, {})) });
   }
 
-  update(animal: Animal): Observable<any> {
-    console.log(animal);
-    return this._http.put<Animal>(this._backendURL.oneAnimal.replace(':id', animal.id), { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) });
+  update(id: string, animal: Animal): Observable<any> {
+    return this._http.put<Animal>(this._backendURL.oneAnimal.replace(':id', id), animal,{ headers: new HttpHeaders({ 'Content-Type': 'application/json' }) });
   }
 
   delete(id: string): Observable<any> {

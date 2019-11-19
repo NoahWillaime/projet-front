@@ -12,6 +12,40 @@ body { margin: 0; font-size: 15px; font-family: Roboto, "Helvetica Neue", sans-s
   body { font-size: 10px; }
 }
 
+mat-toolbar {
+  position: relative;
+}
+
+.toolbar-img {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.toolbar-img a {
+  position: relative;
+  display: flex;
+  height: 100%;
+}
+
+.toolbar-img img {
+  height: 85%;
+  filter: brightness(0) invert(1);
+}
+
+.toolbar-img a span{
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-left: 15px;
+}
+
+.section-principal {
+  position: relative;
+  margin: 2.5%;
+  padding: 2.5%;
+  box-shadow: 0px 0px 10px 2px rgba(194,194,194,0.5);
+}
+
 app-card:hover .type-male:before {
   right: -10%;
   background-color: rgba(9, 132, 227,1.0);
@@ -42,7 +76,7 @@ app-card:hover .info-titre {
   transition: color 0.25s linear 0.75s;
 }
 
-app-card:hover .card-button-del, app-card:hover .card-button-mod{
+app-card:hover .card-button-del, app-card:hover .card-button-mod, app-card:hover .card-button-ref{
   opacity: 1;
   transition: opacity 0.25s linear 0.75s;
 }

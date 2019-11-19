@@ -25,8 +25,13 @@
     <mat-card-subtitle class="card-text">
       <div class="info-text">{{animal.name}} est arrivé le {{animal.enterDate | date: 'dd/MM/yyyy'}} !</div>
     </mat-card-subtitle>
-  <div class="card-button">
-    <a class="card-button-mod" mat-mini-fab [routerLink]="['/edit', animal.id, animal.refugeId]">
+  <div class="refuge-icon">
+    <button class="card-button-ref" mat-mini-fab (click)="goToRefuge()">
+      <mat-icon>home</mat-icon>
+    </button>
+  </div>
+  <div class="card-button" *ngIf="isLogIn() && isOwned">
+    <a class="card-button-mod" mat-mini-fab [routerLink]="['/edit', animal.id]">
       <mat-icon>create</mat-icon>
     </a>
     <button class="card-button-del" mat-mini-fab (click)="delete(animal)">

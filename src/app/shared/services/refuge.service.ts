@@ -50,11 +50,11 @@ export class RefugeService {
 
   update(refuge: Refuge): Observable<any> {
     console.log(refuge);
-    return this._http.put<Refuge>(this._backendURL.allRefuges.replace(':id', refuge.id), { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) });
+    return this._http.put<Refuge>(this._backendURL.oneRefuge.replace(':id', refuge.id), { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) });
   }
 
   delete(id: string): Observable<any> {
-    return this._http.delete(this._backendURL.allRefuges.replace(':id', id))
+    return this._http.delete(this._backendURL.oneRefuge.replace(':id', id))
   }
 
 

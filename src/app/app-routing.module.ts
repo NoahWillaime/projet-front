@@ -18,10 +18,10 @@ const routes: Routes = [
   { path: 'postalCode/:postalCode', component: SpeciesComponent },
   { path: 'species', component: SpeciesComponent },
   { path: 'refuge', component: RefugeComponent },
-  { path: 'edit/:id/:refugeId', component: UpdateComponent },
+  { path: 'edit/:id', component: UpdateComponent },
   { path: 'login', component: LoginComponent },
   { path: 'logout', component: LogoutComponent, canActivate: [AuthGuard] },
-  { path: 'profil', component: ProfilComponent },
+  { path: 'profil', component: ProfilComponent, canActivate: [AuthGuard] },
   { path: 'inscription', component: InscriptionComponent }
 
 ];

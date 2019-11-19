@@ -82,6 +82,26 @@
   background-color: #0652DD;
 }
 
+.refuge-icon {
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  bottom: 0;
+  left: 0;
+}
+
+.card-button-ref {
+  margin: 15px;
+  background-color: rgba(37, 204, 247, 1);
+  color: rgba(236, 240, 241, 1);
+  opacity: 0;
+  transition: opacity 0.25s linear;
+}
+
+.card-button-ref:hover {
+  background-color: #0652DD;
+}
+
 @media screen and (max-width: 1250px) {
   .info-text { font-size: 0.8em; }
   .info-titre { font-size: 0.7em; }

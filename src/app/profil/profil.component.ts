@@ -12,7 +12,7 @@ import {Benevole} from "../shared/interfaces/benevole";
   styleUrls: ['./profil.component.css']
 })
 export class ProfilComponent implements OnInit {
-  private _user: Benevole;
+  private _benev: Benevole;
   private _refuge: Refuge;
   private _hadError: boolean;
 
@@ -28,14 +28,16 @@ export class ProfilComponent implements OnInit {
     return this._hadError;
   }
 
+  get benev(): Benevole {
+    return this._benev;
+  }
+
   ngOnInit() {
-    this._route.queryParams
-      .pipe(
-        filter(_ => !!_),
-        flatMap(_ => this._userService.fetchOne(_.id))
-      )
+    this._benev= JSON.parse(localStorage.getItem('currentUser'));
+    this._userService.fetchOne(this._benev.id)
       .subscribe(
-        (user: Benevole) => this._refugesService.fectchOneByUser(user.id)
+        (user: Benevole) =>
+          this._refugesService.fectchOneByUser(user.id)
           .subscribe(
             (refuge: Refuge) => this._refuge = refuge,
             (error: Error) => this._refuge = {} as Refuge,

@@ -83,7 +83,6 @@ export class FormComponent implements OnInit, OnChanges {
    * Function to handle component update
    */
   ngOnChanges(record) {
-    console.log(record.model);
     if (record.model && record.model.currentValue) {
       this._model = record.model.currentValue;
       this._isUpdateMode = true;
@@ -117,10 +116,9 @@ export class FormComponent implements OnInit, OnChanges {
    * Function to emit event to submit form and person
    */
   submit(data: Animal) {
-    data.id = this._model.id;
+ //   data.id = this._model.id;
     data.refugeId = this._model.refugeId;
     data.enterDate = data.enterDate.getTime();
-    console.log(data);
     this._submit$.emit(data);
   }
 

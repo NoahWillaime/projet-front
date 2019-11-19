@@ -24,7 +24,6 @@ export class BenevolesService {
 
 
   create(user: Benevole): Observable<any> {
-    console.log(user);
     return this._http.post<Benevole>(this._backendURL.allUser, user, { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) });
   }
 }

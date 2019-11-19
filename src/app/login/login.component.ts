@@ -47,8 +47,7 @@ export class LoginComponent implements OnInit {
     this._authentificationService.login(benevole.username, benevole.password)
       .subscribe(
         (data: Benevole) => {
-          console.log(data);
-          this._router.navigate(['/profil'], { queryParams: { id: data.id }});
+          this._router.navigate(['/profil']);
         },
         error => {
           this._error = error;

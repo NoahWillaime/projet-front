@@ -13,8 +13,7 @@ import {Animal} from "../shared/interfaces/animal";
 })
 export class UpdateComponent implements OnInit {
   private _animalDialog: MatDialogRef<DialogComponent>;
-  private _refugeId: string;
-
+  private _animalId: string;
   constructor(private _route: ActivatedRoute,
               private _router: Router,
               private _animalsService: AnimalsService,
@@ -23,8 +22,8 @@ export class UpdateComponent implements OnInit {
   ngOnInit() {
     this._route.params
       .pipe(
-        tap(_ => this._refugeId = _.refugeId),
         map((params: any) => params.id),
+        tap(_ => this._animalId = _),
         flatMap((id: string) => this._animalsService.fetchOne(id))
       )
       .subscribe((animal: Animal) => {
@@ -37,12 +36,12 @@ export class UpdateComponent implements OnInit {
         this._animalDialog.afterClosed()
           .pipe(
             filter(_ => !!_),
-            flatMap(_ => this._animalsService.update(_))
+            flatMap(_ => this._animalsService.update(this._animalId, _))
           )
           .subscribe(
             () => undefined,
             () => undefined,
-            () => this._router.navigate(['/refuge'], { queryParams: { id: this._refugeId }})
+            () => this._router.navigate(['/profil'])
           );
       });
   }
