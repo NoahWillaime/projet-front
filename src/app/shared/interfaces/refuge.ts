@@ -2,10 +2,9 @@ export interface Refuge {
   id?: string;
   name: string;
   address?: Address;
-  animalsIds: string[];
   phone: string;
-  userId: string;
   email: string;
+  userId: string;
 }
 
 export interface Address {

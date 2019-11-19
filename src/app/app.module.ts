@@ -33,6 +33,8 @@ import { ProfilComponent } from './profil/profil.component';
 import { InscriptionComponent } from './inscription/inscription.component';
 import {MatStepperModule} from "@angular/material/stepper";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
+import { DialogRefugeComponent } from './shared/dialog/dialog-refuge/dialog-refuge.component';
+import { FormRefugeComponent } from './shared/form/form-refuge/form-refuge.component';
 
 @NgModule({
   declarations: [
@@ -48,9 +50,11 @@ import {MatSnackBarModule} from "@angular/material/snack-bar";
     FormComponent,
     UpdateComponent,
     ProfilComponent,
-    InscriptionComponent
+    InscriptionComponent,
+    DialogRefugeComponent,
+    FormRefugeComponent
   ],
-  entryComponents: [ DialogComponent ],
+  entryComponents: [ DialogRefugeComponent, DialogComponent ],
   imports: [
     BrowserModule,
     AppRoutingModule,
