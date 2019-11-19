@@ -16,6 +16,7 @@ import {AnimalsService} from '../shared/services/animals.service';
 })
 export class RefugeComponent implements OnInit {
   private _id: string;
+  private _isRefuge: boolean;
   private _refuge: Refuge;
   private _animals: Animal[];
   private _dialogStatus: string;
@@ -29,6 +30,7 @@ export class RefugeComponent implements OnInit {
     this._refuge.address = {} as Address;
     this._animals = [];
     this._dialogStatus = 'inactive';
+    this._isRefuge = false;
   }
 
   get animals(): Animal[] {
@@ -44,20 +46,20 @@ export class RefugeComponent implements OnInit {
     this._refuge = value;
   }
 
+  get isRefuge(): boolean {
+    return this._isRefuge;
+  }
+
   ngOnInit() {
-    this._route.queryParams
-      .pipe(
-        filter(_ => !!_),
-        tap(_ => this._id = _.id),
-        flatMap(_ => this._refugeService.fetchOne(_.id))
-      )
-      .subscribe((refuge: Refuge) => this.refuge = refuge);
-    this._refugeService.fetchAnimals(this._id)
-      .pipe(
-        filter(_ => !!_),
-        defaultIfEmpty([])
-      )
-      .subscribe((animals: Animal[]) => this._animals = [].concat(animals));
+    if (this._refuge.id) {
+      this._refugeService.fetchAnimals(this._refuge.id)
+        .pipe(
+          filter(_ => !!_),
+          defaultIfEmpty([])
+        )
+        .subscribe((animals: Animal[]) => this._animals = [].concat(animals));
+      this._isRefuge = true;
+    }
   }
 
   private _add(animal: Animal): Observable<Animal[]> {

@@ -1,0 +1,4 @@
+<app-refuge *ngIf="!hadError && refuge" [refuge]="refuge"></app-refuge>
+<div *ngIf="hadError">
+  <mat-error> Une erreur est survenue ..</mat-error>
+</div>

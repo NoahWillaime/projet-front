@@ -7,6 +7,8 @@ import {LogoutComponent} from "./logout/logout.component";
 import {AuthGuard} from "./AuthGuard";
 import {RefugeComponent} from './refuge/refuge.component';
 import {UpdateComponent} from "./update/update.component";
+import {InscriptionComponent} from "./inscription/inscription.component";
+import {ProfilComponent} from "./profil/profil.component";
 
 
 const routes: Routes = [
@@ -17,7 +19,9 @@ const routes: Routes = [
   { path: 'refuge', component: RefugeComponent },
   { path: 'edit/:id/:refugeId', component: UpdateComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'logout', component: LogoutComponent, canActivate: [AuthGuard] }
+  { path: 'logout', component: LogoutComponent, canActivate: [AuthGuard] },
+  { path: 'profil', component: ProfilComponent },
+  { path: 'inscription', component: InscriptionComponent }
 
 ];
 

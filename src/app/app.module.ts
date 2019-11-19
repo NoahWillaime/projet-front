@@ -29,6 +29,10 @@ import {MatIconModule} from '@angular/material/icon';
 import {MAT_DATE_LOCALE, MatNativeDateModule, MatSelectModule} from '@angular/material';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { UpdateComponent } from './update/update.component';
+import { ProfilComponent } from './profil/profil.component';
+import { InscriptionComponent } from './inscription/inscription.component';
+import {MatStepperModule} from "@angular/material/stepper";
+import {MatSnackBarModule} from "@angular/material/snack-bar";
 
 @NgModule({
   declarations: [
@@ -42,7 +46,9 @@ import { UpdateComponent } from './update/update.component';
     LogoutComponent,
     DialogComponent,
     FormComponent,
-    UpdateComponent
+    UpdateComponent,
+    ProfilComponent,
+    InscriptionComponent
   ],
   entryComponents: [ DialogComponent ],
   imports: [
@@ -62,7 +68,9 @@ import { UpdateComponent } from './update/update.component';
     MatIconModule,
     MatSelectModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatStepperModule,
+    MatSnackBarModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

@@ -32,6 +32,10 @@ export class RefugeService {
     return this._http.get<Refuge>(this._backendURL.oneRefuge.replace(':id', id));
   }
 
+  fectchOneByUser(id: string): Observable<Refuge> {
+    return this._http.get<Refuge>(this._backendURL.refugeByUser.replace(':id', id));
+  }
+
   fetchAnimals(id: string): Observable<Animal[]> {
     return this._http.get<Animal[]>(this._backendURL.someAnimals.replace(':id', id))
       .pipe(

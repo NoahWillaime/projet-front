@@ -1,0 +1,72 @@
+<mat-vertical-stepper [linear]="true" #stepper>
+  <mat-step [stepControl]="formUser">
+    <form [formGroup]="formUser">
+      <ng-template matStepLabel>Votre pseudo</ng-template>
+      <mat-form-field>
+        <input matInput placeholder="Pseudo" formControlName="username" required name="username" minlength="2">
+        <mat-error *ngIf="formUser.get('username').dirty && formUser.get('username').hasError('required')">
+          Votre pseudo est <strong>obligatoire</strong>
+        </mat-error>
+        <mat-error *ngIf="formUser.get('username').dirty && formUser.get('username').hasError('minlength')">
+          Votre pseudo doit être composé <strong>d'au moins 2 caractères</strong>
+        </mat-error>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperNext>Suivant</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="formPass">
+    <form [formGroup]="formPass">
+      <ng-template matStepLabel>Votre mot de passe</ng-template>
+      <mat-form-field>
+        <input matInput placeholder="Mot de passe" formControlName="password" required name="password" minlength="2" type="password">
+        <mat-error *ngIf="formPass.get('password').dirty && formPass.get('password').hasError('required')">
+          Votre mot de passe est <strong>obligatoire</strong>
+        </mat-error>
+        <mat-error *ngIf="formPass.get('password').dirty && formPass.get('password').hasError('minlength')">
+          Votre mot de passe doit être composé <strong>d'au moins 2 caractères</strong>
+        </mat-error>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperNext>Suivant</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="formFirstname">
+    <form [formGroup]="formFirstname">
+      <ng-template matStepLabel>Votre prénom</ng-template>
+      <mat-form-field>
+        <input matInput placeholder="Prénom" formControlName="firstname" required name="firstname">
+        <mat-error *ngIf="formFirstname.get('firstname').dirty && formFirstname.get('firstname').hasError('required')">
+          Votre prénom est <strong>obligatoire</strong>
+        </mat-error>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperNext>Suivant</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="formLastname">
+    <form [formGroup]="formLastname">
+      <ng-template matStepLabel>Votre nom</ng-template>
+      <mat-form-field>
+        <input matInput placeholder="Nom" formControlName="lastname" required name="lastname">
+        <mat-error *ngIf="formLastname.get('lastname').dirty && formLastname.get('lastname').hasError('required')">
+          Votre nom est <strong>obligatoire</strong>
+        </mat-error>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperNext>Suivant</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Fin</ng-template>
+    Vous pouvez maintenant vous inscrire !
+    <div>
+      <button mat-button (click)="submit()">Enregistrer</button>
+      <button mat-button (click)="stepper.reset()">Réinitialiser</button>
+    </div>
+  </mat-step>
+</mat-vertical-stepper>
