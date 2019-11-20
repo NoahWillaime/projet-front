@@ -5,8 +5,8 @@ export interface Refuge {
   phone: string;
   email: string;
   userId: string;
-  userFirstname: string;
-  userLastname: string;
+  firstname: string;
+  lastname: string;
 }
 
 export interface Address {

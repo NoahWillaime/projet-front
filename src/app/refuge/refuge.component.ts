@@ -32,7 +32,8 @@ export class RefugeComponent implements OnInit {
               private readonly _animalsService: AnimalsService,
               private readonly _route: ActivatedRoute,
               private _dialog: MatDialog,
-              private readonly _authService: AuthentificationService) {
+              private readonly _authService: AuthentificationService,
+              private readonly _router: Router) {
     this._refuge = {} as Refuge;
     this._refuge.address = {} as Address;
     this._animals = [];
@@ -142,9 +143,9 @@ export class RefugeComponent implements OnInit {
         flatMap(_ => this._addRefuge(_))
       )
       .subscribe(
-        (refuge: Refuge) => this._refuge = refuge,
+        () => undefined,
         _ => this._dialogRefugeStatus = 'inactive',
-        () => this._dialogRefugeStatus = 'inactive'
+        () => { this._dialogRefugeStatus = 'inactive'; window.location.reload(); }
       );
   }
 

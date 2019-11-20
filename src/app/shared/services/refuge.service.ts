@@ -45,6 +45,7 @@ export class RefugeService {
   }
 
   create(refuge: Refuge): Observable<any> {
+    console.log(refuge);
     return this._http.post<Refuge>(this._backendURL.allRefuges, refuge, { headers: new HttpHeaders(Object.assign({ 'Content-Type': 'application/json' }, {})) });
   }
 
