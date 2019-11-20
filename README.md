@@ -10,8 +10,9 @@ Ce projet nécessite l'installation de [NodeJS](https://nodejs.org/en/).
 
 ## Mise en place
 
--   Cloner le projet et lancer les commandes :
+-   Mettre en place l'[API](https://github.com/NoahWillaime/projet-back) et lancer les commandes :
 ```bash
+$ git clone https://github.com/NoahWillaime/projet-front
 $ npm install -g npm@latest
 $ npm install -g yarn
 $ yarn global add @angular/cli
