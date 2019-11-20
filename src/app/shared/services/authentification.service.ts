@@ -18,6 +18,7 @@ export class AuthentificationService {
     this._backendURL = {};
     Object.keys(environment.backend.endpoints)
       .forEach(k => this._backendURL[k] = `${backUrl}${environment.backend.endpoints[k]}`);
+    localStorage.removeItem('currentUser');
     this.currentUserSubject = new BehaviorSubject<Benevole>(JSON.parse(localStorage.getItem('currentUser')));
     this.currentUser = this.currentUserSubject.asObservable();
   }
