@@ -88,7 +88,6 @@ export class FormRefugeComponent implements OnInit, OnChanges {
    * Function to handle component update
    */
   ngOnChanges(record) {
-    console.log(record.model); //TODO console.log
     if (record.model && record.model.currentValue) {
       this._model = record.model.currentValue;
       this._isUpdateMode = true;
