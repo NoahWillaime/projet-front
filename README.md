@@ -6,7 +6,7 @@ Back-end : https://github.com/NoahWillaime/projet-back
 
 ## Avant de commencer
 
-Ce projet nécessite l'installation de NodeJs.
+Ce projet nécessite l'installation de [NodeJS](https://nodejs.org/en/).
 
 ## Mise en place
 
