@@ -138,11 +138,15 @@ export class FormRefugeComponent implements OnInit, OnChanges {
         Validators.required, Validators.minLength(2)
       ])),
       address: new FormGroup({
-        street: new FormControl(''),
-        city: new FormControl(''),
-        postalCode: new FormControl('')
+        street: new FormControl('', Validators.compose([
+          Validators.required, Validators.minLength(2)
+        ])),
+        city: new FormControl('', Validators.compose([
+          Validators.required, Validators.minLength(2)
+        ])),
+        postalCode: new FormControl('', Validators.compose([
+          Validators.required, Validators.pattern('\\d{5}')]))
       }),
-      //animalsIds
       phone: new FormControl('', Validators.compose([
         Validators.required, Validators.pattern('\\d{11}')
       ])),

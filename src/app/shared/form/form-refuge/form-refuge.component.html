@@ -4,11 +4,6 @@
 <mat-dialog-content>
   <form novalidate [formGroup]="form">
 
-    <p *ngIf="isUpdateMode">
-      <span style="width:100%">ID (disabled)</span><br/>
-      <span style="width:100%">{{model.id}}</span>
-    </p>
-
     <p>
       <mat-form-field class="full-width" [class.mgb15]="form.get('name').dirty && form.get('name').invalid">
         <input matInput placeholder="Name" formControlName="name" minlength="2" required name="name" />
@@ -23,7 +18,13 @@
 
     <p formGroupName="address">
       <mat-form-field class="full-width">
-        <input matInput placeholder="Street" formControlName="street" name="street"/>
+        <input matInput placeholder="Street" formControlName="street" name="street" minlength="2"/>
+        <mat-error *ngIf="form.get('address').get('street').dirty && form.get('address').get('street').hasError('required')">
+          Street is <strong>required</strong>
+        </mat-error>
+        <mat-error *ngIf="form.get('address').get('street').dirty && form.get('address').get('street').hasError('minlength')">
+          Street is <strong>2 chars min</strong>
+        </mat-error>
       </mat-form-field>
     </p>
 
@@ -31,12 +32,24 @@
       <tr>
         <td>
           <mat-form-field class="full-width">
-            <input matInput placeholder="City" formControlName="city" name="city"/>
+            <input matInput placeholder="City" formControlName="city" name="city" minlength="2"/>
+            <mat-error *ngIf="form.get('address').get('city').dirty && form.get('address').get('city').hasError('required')">
+              City is <strong>required</strong>
+            </mat-error>
+            <mat-error *ngIf="form.get('address').get('city').dirty && form.get('address').get('city').hasError('minlength')">
+              City is <strong>2 chars min</strong>
+            </mat-error>
           </mat-form-field>
         </td>
         <td>
           <mat-form-field class="full-width">
-            <input matInput placeholder="Postal Code" formControlName="postalCode" name="postalCode"/>
+            <input matInput placeholder="Postal Code (ex: 54000)" formControlName="postalCode" name="postalCode"/>
+            <mat-error *ngIf="form.get('address').get('postalCode').dirty && form.get('address').get('postalCode').hasError('required')">
+              Phone is <strong>required</strong>
+            </mat-error>
+            <mat-error *ngIf="form.get('address').get('postalCode').dirty && form.get('address').get('postalCode').hasError('pattern')">
+              Le code postal doit être composé de <strong>5 chiffres</strong>
+            </mat-error>
           </mat-form-field>
         </td>
       </tr>
@@ -49,7 +62,7 @@
           Phone is <strong>required</strong>
         </mat-error>
         <mat-error *ngIf="form.get('phone').dirty && form.get('phone').hasError('pattern')">
-          Phone number must be <strong>11 digits</strong>
+          Le numéro de téléphone doit être composé de <strong>11 chiffres</strong>
         </mat-error>
       </mat-form-field>
     </p>
