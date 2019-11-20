@@ -91,7 +91,7 @@ export class FormComponent implements OnInit, OnChanges {
     } else {
       this._model = {
         name: '',
-        photo: 'https://randomuser.me/api/portraits/lego/6.jpg',
+        photo: 'https://www.randomlists.com/img/animals/panda.webp',
         species: '',
         breed: '',
         gender: '',
@@ -130,7 +130,7 @@ export class FormComponent implements OnInit, OnChanges {
       name: new FormControl('', Validators.compose([
         Validators.required, Validators.minLength(2)
       ])),
-      photo: new FormControl('https://randomuser.me/api/portraits/lego/6.jpg'),
+      photo: new FormControl('https://www.randomlists.com/img/animals/panda.webp'),
       species: new FormControl('', Validators.compose([
         Validators.required, Validators.minLength(2)
       ])),
