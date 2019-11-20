@@ -28,7 +28,6 @@ export class AuthentificationService {
   }
 
   public get userLogged(): boolean {
-    console.log(this.currentUserSubject.value);
     if (!this.currentUserSubject.value)
       return false;
     return true;
