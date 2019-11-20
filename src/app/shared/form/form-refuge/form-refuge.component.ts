@@ -104,7 +104,9 @@ export class FormRefugeComponent implements OnInit, OnChanges {
         },
         phone: '',
         email: '',
-        userId: ''
+        userId: '',
+        userFirstname: '',
+        userLastname: ''
       };
       this._isUpdateMode = false;
     }
@@ -121,6 +123,8 @@ export class FormRefugeComponent implements OnInit, OnChanges {
    * Function to emit event to submit form and person
    */
   submit(data: Refuge) {
+    data.userFirstname = this._benevole.firstname;
+    data.userLastname = this._benevole.lastname;
     data.userId =  this._benevole.id;
     this._submit$.emit(data);
   }
